@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>✨ for Arfin · open when...</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+  min-height: 100vh;
+  background: 
+
+    url("./images/loml.jpeg") no-repeat center center/cover;
+    
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.8rem;
+  position: relative;
+  overflow-x: hidden;
+
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.8rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* rich animated overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(ellipse at 30% 40%, rgba(210, 170, 255, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(255, 200, 220, 0.06) 0%, transparent 45%);
+      pointer-events: none;
+      z-index: 0;
+      animation: gentlePulse 22s infinite alternate;
+    }
+
+    @keyframes gentlePulse {
+      0% { opacity: 0.5; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.08); }
+    }
+
+    /* floating particles — deeper, more magical */
+    .particle {
+      position: fixed;
+      border-radius: 50%;
+      background: rgba(245, 225, 255, 0.25);
+      box-shadow: 0 0 18px #d9b0ff, 0 0 8px #ffcfdf;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatParticle 20s infinite linear;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(120vh) rotate(0deg) scale(0.8); opacity: 0; }
+      15% { opacity: 0.6; }
+      50% { opacity: 0.9; transform: scale(1.2); }
+      85% { opacity: 0.5; }
+      100% { transform: translateY(-30vh) rotate(360deg) scale(1); opacity: 0; }
+    }
+
+    /*.main-card {
+      position: relative;
+      z-index: 15;
+      max-width: 1000px;
+      width: 100%;
+      background: rgba(18, 14, 28, 0.45);
+      backdrop-filter: blur(18px) saturate(200%);
+      -webkit-backdrop-filter: blur(18px) saturate(200%);
+      border: 1.5px solid rgba(255, 215, 240, 0.18);
+      border-radius: 56px;
+      padding: 2.8rem 2.5rem;
+      box-shadow: 0 40px 70px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(230, 180, 255, 0.12) inset, 0 8px 20px -8px #aa7eff33 inset;
+      transition: box-shadow 0.4s, border-color 0.3s;
+    }
+
+    .main-card:hover {
+      border-color: rgba(255, 210, 255, 0.35);
+      box-shadow: 0 45px 80px rgba(0, 0, 0, 0.7), 0 0 0 1.5px #eecbff40 inset;
+    }
+
+    /* header with names */
+    .header-flex {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #f3e6ff;
+      text-shadow: 0 6px 18px #b77eff, 0 2px 0 #352a4a;
+      font-family: 'Cormorant Garamond', serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .name-badge {
+      background: rgba(210, 170, 250, 0.18);
+      backdrop-filter: blur(5px);
+      padding: 0.3rem 1.2rem;
+      border-radius: 60px;
+      border: 1px solid #dbbaff60;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #ffe6c7;
+      font-family: 'Quicksand', sans-serif;
+      box-shadow: 0 4px 12px #00000030;
+    }
+
+    .sub-line {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #cfc1e9;
+      margin-bottom: 2.5rem;
+      padding-left: 0.8rem;
+      border-left: 5px solid #c197ff;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .sub-line i {
+      color: #ffcfb0;
+    }
+
+    /* button panel — elegant */
+    .button-panel {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .envelope-btn {
+      background: rgba(35, 25, 55, 0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(220, 180, 255, 0.35);
+      border-radius: 80px;
+      padding: 1.1rem 2.2rem;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #f0e0ff;
+      box-shadow: 0 15px 28px -10px #00000080, 0 3px 0 0 #3e2c58 inset, 0 -2px 10px rgba(255, 240, 255, 0.05) inset;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
+      letter-spacing: 0.5px;
+      transform: translateY(0);
+      flex: 0 1 auto;
+    }
+
+    .envelope-btn i {
+      font-size: 1.7rem;
+      color: #fec89a;
+      filter: drop-shadow(0 3px 5px #00000050);
+      transition: transform 0.2s;
+    }
+
+    .envelope-btn:hover {
+      background: rgba(85, 55, 130, 0.7);
+      border-color: #e2b6ff;
+      box-shadow: 0 18px 30px -8px #1f1130, 0 2px 0 0 #6f4b9a inset, 0 0 22px #c08aff;
+      transform: translateY(-4px);
+      color: white;
+    }
+
+    .envelope-btn:hover i {
+      transform: scale(1.15) rotate(4deg);
+    }
+
+    .envelope-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 8px 18px -6px black, 0 2px 0 0 #4d346b inset;
+    }
+
+    .envelope-btn.active-btn {
+      background: #7a5da0dd;
+      border-color: #f5d5ff;
+      box-shadow: 0 0 24px #c89eff, 0 2px 0 0 #543e78 inset;
+      color: #fffcf0;
+    }
+
+    /* letter stage — premium glass */
+    .letter-stage {
+      background: rgba(12, 8, 20, 0.5);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 44px;
+      padding: 2.4rem 2.2rem;
+      border: 1px solid rgba(255, 225, 245, 0.2);
+      box-shadow: 0 25px 45px -8px #04010a, inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+      transition: opacity 0.4s, transform 0.4s;
+      min-height: 260px;
+    }
+
+    .message-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      flex: 1;
+    }
+
+    .msg-icon {
+      font-size: 3.6rem;
+      color: #ffdfb5;
+      filter: drop-shadow(0 8px 10px #00000050);
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .msg-text {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.5;
+      color: #f5eaff;
+      text-shadow: 0 2px 8px #120e1c;
+      word-break: break-word;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+    }
+
+    .signature-line {
+      margin-top: 20px;
+      font-size: 1.25rem;
+      font-style: italic;
+      color: #e2c9ff;
+      text-align: right;
+      border-top: 1px dashed #957fb0;
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .love-sig {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #ffe3b2;
+      letter-spacing: 1px;
+    }
+
+    .clear-btn {
+      background: transparent;
+      border: 1.5px solid #aa92c7;
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-family: 'Quicksand', sans-serif;
+      color: #ddceff;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: 0.2s;
+    }
+
+    .clear-btn:hover {
+      background: #4f377080;
+      border-color: #e4c5ff;
+      color: white;
+    }
+
+    .fade-transition {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.28s, transform 0.35s;
+    }
+
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tiny-footer {
+      margin-top: 24px;
+      text-align: right;
+      color: #9d88b5;
+      font-size: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (max-width: 650px) {
+      body { padding: 1rem; }
+      .main-card { padding: 2rem 1.2rem; }
+      h1 { font-size: 2.8rem; }
+      .name-badge { font-size: 1.3rem; padding: 0.2rem 0.9rem; }
+      .envelope-btn { padding: 0.9rem 1.5rem; font-size: 1.1rem; }
+      .msg-text { font-size: 1.3rem; }
+      .msg-icon { font-size: 2.8rem; min-width: 55px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- magical particles -->
+  <div class="particle" style="left: 5%; width: 7px; height: 7px; animation-duration: 18s; background: #eaceff;"></div>
+  <div class="particle" style="left: 18%; width: 4px; height: 4px; animation-duration: 26s; background: #ffd9b3;"></div>
+  <div class="particle" style="left: 35%; width: 6px; height: 6px; animation-duration: 22s;"></div>
+  <div class="particle" style="left: 55%; width: 5px; height: 5px; animation-duration: 30s; background: #cfb0ff;"></div>
+  <div class="particle" style="left: 72%; width: 8px; height: 8px; animation-duration: 20s; background: #ffc2d1;"></div>
+  <div class="particle" style="left: 88%; width: 3px; height: 3px; animation-duration: 24s;"></div>
+  <div class="particle" style="left: 95%; width: 5px; height: 5px; animation-duration: 28s;"></div>
+
+  <div class="main-card">
+    <div class="header-flex">
+      <h1>
+        <i class="fas fa-envelope-open-text" style="font-size: 3rem;"></i> 
+        open when...
+      </h1>
+      <span class="name-badge">
+        <i class="fas fa-heart" style="margin-right: 8px; color: #ffa7b9;"></i> for Arfin
+      </span>
+    </div>
+    <div class="sub-line">
+      <i class="fas fa-feather"></i> 
+      <span>little letters from Ibrahim · press any moment</span>
+    </div>
+
+    <!-- interactive buttons (personalized) -->
+    <div class="button-panel">
+      <button class="envelope-btn" data-mood="sad">
+        <i class="fas fa-heart-circle-plus"></i> when you're sad
+      </button>
+      <button class="envelope-btn" data-mood="miss">
+        <i class="fas fa-hand-holding-heart"></i> when you miss me
+      </button>
+      <button class="envelope-btn" data-mood="sleep">
+        <i class="fas fa-cloud-moon"></i> when you can't sleep
+      </button>
+    </div>
+
+    <!-- letter display area with signature -->
+    <div class="letter-stage" id="letterStage">
+      <div class="message-content" id="messageContent">
+        <div class="msg-icon" id="msgIcon">
+          <i class="fas fa-scroll"></i>
+        </div>
+        <div class="msg-text" id="msgText">
+          Your letter is waiting, Arfin.<br>Choose a moment above...
+        </div>
+      </div>
+      <div class="signature-line">
+        <span id="msgMoodTag">✨ with love, Ibrahim</span>
+        <button class="clear-btn" id="clearMessageBtn" aria-label="clear"><i class="far fa-times-circle"></i> close letter</button>
+      </div>
+    </div>
+    <div class="tiny-footer">
+      <i class="fas fa-infinity"></i>
+      <span>— ibrahim, always</span>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      "use strict";
+
+      // ----- Personalized messages for Arfin, from Ibrahim -----
+      const messages = {
+        sad: {
+          icon: '<i class="fas fa-heart"></i>',
+          text: `Dearest Arfin,<br><br>I know some days feel heavier than others. But please remember: you are never a burden. Your heart is one of the most beautiful things I've ever known. I wish I could sit beside you, hold your hand, and remind you that sadness doesn't define you — your strength does. Breathe slowly. I'm sending you all the warmth I have. You are so, so loved.`,
+          tag: '💙 holding you close · with love, Ibrahim'
+        },
+        miss: {
+          icon: '<i class="fas fa-paper-plane"></i>',
+          text: `Arfin,<br><br>Missing you is a quiet ache, but it's also proof of how deeply I care. Every song, every star, every random thought somehow leads back to you. But here's a secret: distance can't touch what we have. You're stitched into my days. Close your eyes — can you feel that gentle tug? That's me, thinking of you, always. I can't wait until we're together again.`,
+          tag: '🌙 missing you too · with love, Ibrahim'
+        },
+        sleep: {
+          icon: '<i class="fas fa-moon-stars"></i>',
+          text: `Sweet Arfin,<br><br>I know your mind is racing while the world is quiet. Let's change that. Imagine my voice, low and steady, reading your favorite lines. Imagine a blanket of calm wrapping around you. You're safe. Tomorrow is a new day, and I'll be here. Let go of the worries — just for tonight. Rest now, my love. I'll be in your dreams.`,
+          tag: '🕊️ sleep well · with love, Ibrahim'
+        },
+        default: {
+          icon: '<i class="fas fa-envelope"></i>',
+          text: `Your letter is waiting, Arfin.<br>Choose a moment above...`,
+          tag: '✨ with love, Ibrahim'
+        }
+      };
+
+      // DOM elements
+      const msgIcon = document.getElementById('msgIcon');
+      const msgText = document.getElementById('msgText');
+      const msgMoodTag = document.getElementById('msgMoodTag');
+      const letterStage = document.getElementById('letterStage');
+      const messageContentDiv = document.getElementById('messageContent');
+      const clearBtn = document.getElementById('clearMessageBtn');
+      const buttons = document.querySelectorAll('.envelope-btn');
+
+      // Smooth content transition
+      function updateMessageContent(moodKey) {
+        const data = messages[moodKey] || messages.default;
+        
+        messageContentDiv.classList.add('fade-transition');
+        
+        setTimeout(() => {
+          msgIcon.innerHTML = data.icon;
+          msgText.innerHTML = data.text;
+          msgMoodTag.innerHTML = data.tag;
+          
+          messageContentDiv.classList.remove('fade-transition');
+          messageContentDiv.classList.add('fade-in');
+          
+          setTimeout(() => {
+            messageContentDiv.classList.remove('fade-in');
+          }, 380);
+        }, 70);
+      }
+
+      function resetToDefault() {
+        updateMessageContent('default');
+        buttons.forEach(btn => btn.classList.remove('active-btn'));
+        // subtle glow
+        letterStage.style.transition = 'box-shadow 0.3s';
+        letterStage.style.boxShadow = '0 0 30px #c5a3ff40, inset 0 0 0 1px rgba(255,255,255,0.08)';
+        setTimeout(() => letterStage.style.boxShadow = '', 350);
+      }
+
+      // Button interaction
+      function handleButtonClick(event) {
+        const btn = event.currentTarget;
+        const mood = btn.dataset.mood;
+        if (!mood) return;
+        
+        buttons.forEach(b => b.classList.remove('active-btn'));
+        btn.classList.add('active-btn');
+        
+        updateMessageContent(mood);
+        
+        // tactile micro-animation
+        btn.style.transform = 'scale(0.97)';
+        setTimeout(() => btn.style.transform = '', 120);
+      }
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', handleButtonClick);
+      });
+
+      clearBtn.addEventListener('click', function() {
+        resetToDefault();
+      });
+
+      // Escape key to clear
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          resetToDefault();
+        }
+      });
+
+      // Extra interactive polish
+      letterStage.addEventListener('mouseenter', () => {
+        letterStage.style.transition = 'box-shadow 0.35s';
+        letterStage.style.boxShadow = '0 0 45px #d4b0ff70, inset 0 0 0 1px #f0d8ff30';
+      });
+      letterStage.addEventListener('mouseleave', () => {
+        letterStage.style.boxShadow = '';
+      });
+
+      // Double-click on header resets with a spark
+      const header = document.querySelector('h1');
+      header.addEventListener('dblclick', () => {
+        resetToDefault();
+        const spark = document.createElement('i');
+        spark.className = 'fas fa-sparkles';
+        spark.style.marginLeft = '12px';
+        spark.style.opacity = '0';
+        spark.style.transition = 'opacity 0.2s';
+        header.appendChild(spark);
+        setTimeout(() => spark.style.opacity = '1', 10);
+        setTimeout(() => {
+          spark.style.opacity = '0';
+          setTimeout(() => spark.remove(), 300);
+        }, 700);
+      });
+
+      // Console greeting — for Arfin
+      console.log('%c💌 dear Arfin · each letter was written with love by Ibrahim', 'font-size: 16px; background: #33284a; color: #f7e3ff; padding: 8px 16px; border-radius: 40px; font-weight: 600;');
+
+      // Ensure default active state: no button highlighted initially
+      // Default message already set.
+    })();
+  </script>
+</body>
+</html>
